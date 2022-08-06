@@ -9,10 +9,6 @@ const supportedFileExtensions = {
     ".js": "text/javascript"
 };
 
-function writeEarlyHints(hints) {
-
-};
-
 httpServer.on("request", (request, response) => {
     console.log(`${request.method} ${request.url}`);
 
