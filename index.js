@@ -42,7 +42,7 @@ httpServer.on("request", (request, response) => {
                 console.log(`200 OK for ${request.url}`);
 
                 response.writeHead(200, "OK", {
-                    "Content-Type": supportedFileExtensions[extension],
+                    "Content-Type": `${supportedFileExtensions[extension]}; charset=UTF-8`,
                     "Link": hints
                 });
 
@@ -53,7 +53,7 @@ httpServer.on("request", (request, response) => {
         }
 
         response.writeHead(200, {
-            "Content-Type": supportedFileExtensions[extension]
+            "Content-Type": `${supportedFileExtensions[extension]}; charset=UTF-8`
         });
 
         return response.end(fs.readFileSync(`public/${request.url}`));
