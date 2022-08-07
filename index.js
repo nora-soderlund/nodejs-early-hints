@@ -6,7 +6,9 @@ const httpServer = http.createServer();
 const supportedFileExtensions = {
     ".html": "text/html",
     ".css": "text/css",
-    ".js": "text/javascript"
+    ".js": "text/javascript",
+    ".svg": "image/svg+xml",
+    ".png": "image/png"
 };
 
 httpServer.on("request", (request, response) => {
@@ -32,8 +34,9 @@ httpServer.on("request", (request, response) => {
             console.log(`103 Early Hints for ${request.url}`);
 
             const hints = [
-                "</styles/main.css>; rel=preload; as=style",
-                "</scripts/main.js>; rel=preload; as=script"
+                "</styles/main.min.css>; rel=preload; as=style",
+                "<https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css>; rel=preload; as=style",
+                //"</scripts/main.js>; rel=preload; as=script"
             ];
 
             response._writeRaw(`HTTP/1.1 103 Early Hints\r\n${hints.map((hint) => `Link: ${hint}\r\n`).join('')}\r\n`, 'ascii', undefined);
@@ -47,7 +50,7 @@ httpServer.on("request", (request, response) => {
                 });
 
                 return response.end(fs.readFileSync(`public/${request.url}`));
-            }, 2000);
+            }, 5000);
 
             return;
         }
