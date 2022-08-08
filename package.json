@@ -1,11 +1,7 @@
 {
-  "name": "early-requests",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
+  "name": "@nora-soderlund/http-early-hints",
+  "version": "1.0.1",
+  "repository": "github:nora-salehson/nodejs-early-hints",
   "author": "Nora Söderlund",
   "license": "ISC"
 }
